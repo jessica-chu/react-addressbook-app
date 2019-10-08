@@ -14,21 +14,21 @@ class App extends Component {
         key: generate(10),
         FirstName: "Cathy",
         LastName: "Pierce",
-        Birthday: "9/14/1996",
+        Birthday: "09/14/1996",
         Telephone: "200-910-8132"
       },
       {
         key: generate(10),
         FirstName: "Alfonso",
         LastName: "Cooley",
-        Birthday: "8/10/1973",
+        Birthday: "08/10/1973",
         Telephone: "200-657-9362"
       },
       {
         key: generate(10),
         FirstName: "Victor",
         LastName: "Gordon",
-        Birthday:  "8/3/1970",
+        Birthday:  "08/3/1970",
         Telephone: "200-661-9407"
       },
       {
@@ -42,14 +42,14 @@ class App extends Component {
         key: generate(10),
         FirstName: "James",
         LastName: "Johnston",
-        Birthday: "5/11/1972",
+        Birthday: "05/11/1972",
         Telephone: "200-645-3176"
       },
       {
         key: generate(10),
         FirstName: "Anna",
         LastName: "Reyes",
-        Birthday: "9/10/1975",
+        Birthday: "09/10/1975",
         Telephone: "200-707-8670"
       }
     ],
@@ -63,10 +63,11 @@ class App extends Component {
   addTodoHandler = (event) => {
     event.preventDefault();
     let newTodo = {
-      firstName: this.state.formFirstName,
-      lastName: this.state.formLastName,
-      birthday: this.state.formBirthday,
-      telephone: this.state.formTelephone
+      key: generate (10),
+      FirstName: this.state.formFirstName,
+      LastName: this.state.formLastName,
+      Birthday: this.state.formBirthday,
+      Telephone: this.state.formTelephone
     };
     this.setState({todos:[...this.state.todos,newTodo]});
     this.setState({formFirstName:''});
@@ -93,21 +94,34 @@ class App extends Component {
             todos={this.state.todos}
             closer={this.closeTodoHandler}>
           </ListTodos>
-          <h2 className='text-left'>Add an address book entry</h2>
+          <br />
+          <h2 className='text-left'>Add an Address Book Entry</h2>
           <Form className="text-left" onSubmit={this.addTodoHandler}>
             <Form.Group controlId="formToDo">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>First Name</Form.Label>
               <Form.Control 
                 type="text" 
-                placeholder="Enter Title" 
-                value={this.state.formTitle}
-                onChange={(e) => this.setState({formTitle: e.target.value})}/>
-              <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" 
-                rows="3" 
-                placeholder="Enter Description" 
-                value={this.state.formDescription}
-                onChange={(e) => this.setState({formDescription:e.target.value})}/>
+                placeholder="Enter first name" 
+                value={this.state.formFirstName}
+                onChange={(e) => this.setState({formFirstName: e.target.value})}/>
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter last name" 
+                value={this.state.formLastName}
+                onChange={(e) => this.setState({formLastName: e.target.value})}/>
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter date of birth (mm/dd/yyyy)" 
+                value={this.state.formBirthday}
+                onChange={(e) => this.setState({formBirthday: e.target.value})}/>
+              <Form.Label>Telephone</Form.Label>
+              <Form.Control 
+                type="text"
+                placeholder="Enter phone number (###-###-####)" 
+                value={this.state.formTelephone}
+                onChange={(e) => this.setState({formTelephone:e.target.value})}/>
             </Form.Group>
             <Button variant="primary" type="submit" >
             Add entry

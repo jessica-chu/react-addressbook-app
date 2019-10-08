@@ -13,8 +13,9 @@ function ListTodos (props) {
           className="text-right"
           onClick={props.closer.bind(null,item.key)}>{'\u274e'}</span>
           <Card.Body className="text-left">
-            <h5 >{item.title}</h5>
-            <p>{item.description}</p>
+            <h5 >{item.FirstName + ' ' + item.LastName}</h5>
+            <p>{item.Birthday}</p>
+            <p>{item.Telephone}</p>
           </Card.Body>
         </Card>
     </ListGroup.Item>)

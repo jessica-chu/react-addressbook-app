@@ -1,0 +1,2 @@
+# Ignores node_modules folder and all files within it.
+/node_modules/*

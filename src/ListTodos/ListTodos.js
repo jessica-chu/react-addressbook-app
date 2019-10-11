@@ -11,8 +11,16 @@ function ListTodos (props) {
       <Card className="bg-light border rounded">
         <span key={item.key}
           className="text-right"
-          onClick={() => 
-            {if (window.confirm('Are you sure you wish to delete this item?')) {props.closer.bind(null,item.key);}} 
+          onClick={
+            // () => {
+            //   if (window.confirm('Are you sure you wish to delete this item?')) {
+            //     props.closer.bind(null,item.key);
+            //     console.log("Ok was pressed!");
+            //   } else {
+            //     console.log("Cancel was pressed!");
+            //   }
+            // } 
+            props.closer.bind(null,item.key)
           }>{'\u274e'}</span>
           <Card.Body className="text-left">
             <h5 >{item.FirstName + ' ' + item.LastName}</h5>

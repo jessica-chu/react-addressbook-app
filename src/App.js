@@ -28,7 +28,7 @@ class App extends Component {
         key: generate(10),
         FirstName: "Victor",
         LastName: "Gordon",
-        Birthday:  "08/3/1970",
+        Birthday:  "08/03/1970",
         Telephone: "200-661-9407"
       },
       {
@@ -58,6 +58,7 @@ class App extends Component {
     "formLastName": '',
     "formBirthday": '',
     "formTelephone": '',
+    search: ""
   }
 
   addTodoHandler = (event) => {
@@ -83,6 +84,18 @@ class App extends Component {
     this.setState({"todos":todos});
   }
 
+  searchHandler = e => {
+    let todos = [...this.state.todos]
+
+    const filtered = todos.filter(item => {
+      return JSON.stringify(item).toLowerCase().includes(e.target.value.toLowerCase())
+    })
+
+    filtered.map(items => {
+      return items.FirstName;
+     })
+  }
+
   render = () => {
     return (
       <div className="App">
@@ -90,6 +103,10 @@ class App extends Component {
           <header className="App-header text-left">
             <h1>React-Based Address Book</h1>
           </header>
+          <div>
+            <input type="text" className="input" placeholder="Search" onChange={this.searchHandler} />
+          </div>
+          <br />
           <ListTodos 
             todos={this.state.todos}
             closer={this.closeTodoHandler}>
